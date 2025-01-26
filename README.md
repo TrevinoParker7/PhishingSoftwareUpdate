@@ -114,10 +114,13 @@ DeviceProcessEvents
 - **Event**: Communication with a C2 server over the internet, potentially exfiltrating credentials.  
 - **Query Used**:  
 ```kql
-DeviceNetworkEvents
-| where RemoteUrl contains "raw.githubusercontent.com"
+union DeviceNetworkEvents, DeviceProcessEvents
+| where Timestamp > ago(6h)
+| where RemoteUrl contains "raw.githubusercontent.com" or InitiatingProcessCommandLine has "phishingFakeSoftwareUpdate.ps1"
+| project Timestamp, DeviceName, RemoteUrl, RemoteIP, InitiatingProcessCommandLine, FileName, FolderPath, ActionType
 | order by Timestamp desc
 ```
+![Screenshot 2025-01-26 140306](https://github.com/user-attachments/assets/f41a1d4e-246e-4ca1-9053-5a0630777595)
 
 ---
 
