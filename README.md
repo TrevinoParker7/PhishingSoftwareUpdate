@@ -127,7 +127,6 @@ union DeviceNetworkEvents, DeviceProcessEvents
 ### 4️⃣ **Lateral Movement & Credential Dumping**  
 - **TTPs**:  
   - [T1210](https://attack.mitre.org/techniques/T1210) - Exploitation of Remote Services  
-  - [T1555.003](https://attack.mitre.org/techniques/T1555/003) - Credentials in Files  
 
 ---
 
